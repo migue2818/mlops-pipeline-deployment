@@ -74,11 +74,4 @@ jobs:
           images: ${{ secrets.ACR_LOGIN_SERVER }}/${{ env.ACR_IMAGE_NAME }}:latest
 
       - name: Configure ACR credentials on Web App
-        run: |
-          az webapp config container set \
-            --name ${{ env.WEBAPP_NAME }} \
-            --resource-group rg-mlops-pipeline \
-            --docker-custom-image-name ${{ secrets.ACR_LOGIN_SERVER }}/${{ env.ACR_IMAGE_NAME }}:latest \
-            --docker-registry-server-url https://${{ secrets.ACR_LOGIN_SERVER }} \
-            --docker-registry-server-user ${{ secrets.ACR_USERNAME }} \
-            --docker-registry-server-password ${{ secrets.ACR_PASSWORD }}
+        run: az webapp config container set --name ${{ env.WEBAPP_NAME }} --resource-group rg-mlops-pipeline --docker-custom-image-name ${{ secrets.ACR_LOGIN_SERVER }}/${{ env.ACR_IMAGE_NAME }}:latest --docker-registry-server-url https://${{ secrets.ACR_LOGIN_SERVER }} --docker-registry-server-user ${{ secrets.ACR_USERNAME }} --docker-registry-server-password ${{ secrets.ACR_PASSWORD }}
