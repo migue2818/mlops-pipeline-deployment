@@ -78,7 +78,7 @@ jobs:
           az webapp config container set \
             --name ${{ env.WEBAPP_NAME }} \
             --resource-group rg-mlops-pipeline \
-            --container-image-name ${{ secrets.ACR_LOGIN_SERVER }}/${{ env.ACR_IMAGE_NAME }}:latest \
-            --container-registry-url https://${{ secrets.ACR_LOGIN_SERVER }} \
-            --container-registry-user ${{ secrets.ACR_USERNAME }} \
-            --container-registry-password ${{ secrets.ACR_PASSWORD }}
+            --docker-custom-image-name ${{ secrets.ACR_LOGIN_SERVER }}/${{ env.ACR_IMAGE_NAME }}:latest \
+            --docker-registry-server-url https://${{ secrets.ACR_LOGIN_SERVER }} \
+            --docker-registry-server-user ${{ secrets.ACR_USERNAME }} \
+            --docker-registry-server-password ${{ secrets.ACR_PASSWORD }}
